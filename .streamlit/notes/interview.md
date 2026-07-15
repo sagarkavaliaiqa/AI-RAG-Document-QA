@@ -98,3 +98,10 @@ Q: How do you decide what goes into .gitignore?
 Answer:
 
 I include files and folders that are either generated automatically, contain sensitive information, or are specific to my local machine. For example, I ignore .env because it contains secrets, .venv because it can be recreated from requirements.txt, __pycache__ because Python generates it automatically, and runtime-generated folders like uploaded_docs and vector_store because they are created when the application runs. I commit only the source code, configuration needed by everyone, dependency list, and documentation.
+Interview Question
+
+Q: Why do we configure user.name and user.email in Git?
+
+Answer:
+
+Git records the author's name and email with every commit. This allows changes to be traced back to the developer who made them, which is useful for collaboration, code reviews, and maintaining project history.

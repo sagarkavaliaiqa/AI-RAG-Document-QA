@@ -1,0 +1,202 @@
+﻿Diagnose log at 2026-07-15T10:56:03Z
+
+AppPath: C:\Program Files\Git\mingw64\bin\git-credential-manager.exe
+InstallDir: C:\Program Files\Git\mingw64\bin\
+Version: 2.6.1+786ab03440ddc82e807a97c0e540f5247e44cec6
+
+------------
+Diagnostic: Environment
+Skipped: False
+Success: True
+Exception: None
+Log:
+OSType: Windows
+OSVersion: 10.0 (build 19045)
+Reading environment variables... OK
+ Variables:
+HOMEPATH=\Users\KUMAR
+DriverData=C:\Windows\System32\Drivers\DriverData
+COMPUTERNAME=DESKTOP-6OS3GBQ
+GIT_TRACE2_PARENT_SID=2d750102-0630-4ae7-9866-a5e54056bdcc
+CommonProgramFiles(x86)=C:\Program Files (x86)\Common Files
+OneDrive=C:\Users\KUMAR\OneDrive
+PYTHONSTARTUP=c:\Users\KUMAR\AppData\Roaming\Code\User\workspaceStorage\f7afee40467612802209128fa0115ca6\ms-python.python\pythonrc.py
+PYTHON_BASIC_REPL=1
+BUNDLED_DEBUGPY_PATH=c:\Users\KUMAR\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\libs\debugpy
+PyCharm=C:\Program Files\JetBrains\PyCharm 2025.3.2\bin
+SESSIONNAME=Console
+PYDEVD_DISABLE_FILE_VALIDATION=1
+TMP=C:\Users\KUMAR\AppData\Local\Temp
+PROCESSOR_REVISION=4e03
+PROCESSOR_ARCHITECTURE=x86
+PATHEXT=.COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW;.CPL
+GIT_ASKPASS=c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\vscode.git\askpass\70789581cae28aa7\askpass.sh
+GIT_EXEC_PATH=C:/Program Files/Git/mingw64/libexec/git-core
+TEMP=C:\Users\KUMAR\AppData\Local\Temp
+LOCALAPPDATA=C:\Users\KUMAR\AppData\Local
+MSYSTEM=MINGW64
+TERM=xterm-256color
+COMPOSE_CONVERT_WINDOWS_PATHS=true
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
+VSCODE_PYTHON_AUTOACTIVATE_GUARD=1
+COLORTERM=truecolor
+JAVA_HOME=C:\Users\KUMAR\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.16.8-hotspot
+USERDOMAIN=DESKTOP-6OS3GBQ
+ProgramFiles(x86)=C:\Program Files (x86)
+Path=C:/Program Files/Git/mingw64/libexec/git-core;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\KUMAR\bin;E:\RAG MINPROJECT1\.venv\Scripts;c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Windows\System32\java.exe;%JAVA_HOME% \ bin;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Git\cmd;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Node.js;C:\Program Files\nodejs\node_modules;C:\Program Files\nodejs\;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\;C:\Users\KUMAR\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.16.8-hotspot\bin;C:\Users\KUMAR\AppData\Local\Microsoft\WindowsApps;C:\Users\KUMAR\.dotnet\tools;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Windows\System32\java.exe;%JAVA_HOME% \ bin;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Git\cmd;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Node.js;C:\Program Files\nodejs\node_modules;C:\Program Files\nodejs\;C:\Program Files\JetBrains\PyCharm 2025.3.2\bin;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\Programs\Ollama;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\KUMAR\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\KUMAR\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\KUMAR\AppData\Roaming\npm;C:\Users\KUMAR\AppData\Local\Python\bin;c:\Users\KUMAR\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\scripts\noConfigScripts
+TERM_PROGRAM=vscode
+PROCESSOR_LEVEL=6
+NUMBER_OF_PROCESSORS=4
+TMPDIR=C:\Users\KUMAR\AppData\Local\Temp
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+TERM_PROGRAM_VERSION=1.127.0
+VSCODE_GIT_ASKPASS_MAIN=c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\vscode.git\askpass\70789581cae28aa7\askpass-main.js
+PSModulePath=C:\Users\KUMAR\OneDrive\Documents\WindowsPowerShell\Modules;C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
+PUBLIC=C:\Users\Public
+VSCODE_GIT_IPC_HANDLE=\\.\pipe\vscode-git-d347f65b18-sock
+FPS_BROWSER_USER_PROFILE_STRING=Default
+CommonProgramFiles=C:\Program Files (x86)\Common Files
+VSCODE_INJECTION=1
+VSCODE_DEBUGPY_ADAPTER_ENDPOINTS=c:\Users\KUMAR\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\.noConfigDebugAdapterEndpoints\endpoint-14adf227581e3af7.txt
+VIRTUAL_ENV=E:\RAG MINPROJECT1\.venv
+CHROME_CRASHPAD_PIPE_NAME=\\.\pipe\crashpad_16364_AHSRBUAYPRLGMITS
+PLINK_PROTOCOL=ssh
+ProgramData=C:\ProgramData
+ProgramW6432=C:\Program Files
+ProgramFiles=C:\Program Files (x86)
+CLAUDE_CODE_SSE_PORT=10093
+SynaProgDir=Synaptics\SynTP
+VSCODE_GIT_ASKPASS_NODE=C:\Users\KUMAR\AppData\Local\Programs\Microsoft VS Code\Code.exe
+SystemRoot=C:\WINDOWS
+NVM_SYMLINK=C:\nvm4w\nodejs
+NVM_HOME=C:\Users\KUMAR\AppData\Local\nvm
+HOME=C:\Users\KUMAR
+_OLD_VIRTUAL_PATH=c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\debugCommand;c:\Users\KUMAR\AppData\Roaming\Code\User\globalStorage\github.copilot-chat\copilotCli;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Windows\System32\java.exe;%JAVA_HOME% \ bin;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Git\cmd;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Node.js;C:\Program Files\nodejs\node_modules;C:\Program Files\nodejs\;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts\;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\;C:\Users\KUMAR\AppData\Local\Programs\Eclipse Adoptium\jdk-17.0.16.8-hotspot\bin;C:\Users\KUMAR\AppData\Local\Microsoft\WindowsApps;C:\Users\KUMAR\.dotnet\tools;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;;C:\Python314\Scripts\;C:\Python314\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Microsoft\jdk-11.0.16.101-hotspot\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\dotnet\;C:\Windows\System32\java.exe;%JAVA_HOME% \ bin;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312;C:\Users\KUMAR\AppData\Local\Programs\Python\Python312\Scripts;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Git\cmd;C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Node.js;C:\Program Files\nodejs\node_modules;C:\Program Files\nodejs\;C:\Program Files\JetBrains\PyCharm 2025.3.2\bin;C:\Users\KUMAR\VSCODE\bugs2bar\maven-mvnd-1.0.3-windows-amd64\bin;C:\Users\KUMAR\AppData\Local\Programs\Ollama;C:\Users\KUMAR\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\KUMAR\AppData\Local\Programs\cursor\resources\app\bin;C:\Users\KUMAR\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\KUMAR\AppData\Roaming\npm;C:\Users\KUMAR\AppData\Local\Python\bin;c:\Users\KUMAR\.vscode\extensions\ms-python.debugpy-2026.6.0-win32-x64\bundled\scripts\noConfigScripts
+CommonProgramW6432=C:\Program Files\Common Files
+ZES_ENABLE_SYSMAN=1
+LOGONSERVER=\\DESKTOP-6OS3GBQ
+USERPROFILE=C:\Users\KUMAR
+COPILOT_DEBUG_NONCE=962b88986482ef10f0d7cd073d62d074
+VIRTUAL_ENV_PROMPT=.venv
+USERDOMAIN_ROAMINGPROFILE=DESKTOP-6OS3GBQ
+APPDATA=C:\Users\KUMAR\AppData\Roaming
+HOMEDRIVE=C:
+USERNAME=KUMAR
+PROCESSOR_ARCHITEW6432=AMD64
+FPS_BROWSER_APP_PROFILE_STRING=Internet Explorer
+PSExecutionPolicyPreference=RemoteSigned
+OS=Windows_NT
+ComSpec=C:\WINDOWS\system32\cmd.exe
+SystemDrive=C:
+windir=C:\WINDOWS
+LANG=en_US.UTF-8
+ALLUSERSPROFILE=C:\ProgramData
+
+
+------------
+Diagnostic: File system
+Skipped: False
+Success: True
+Exception: None
+Log:
+Temporary directory is 'C:\Users\KUMAR\AppData\Local\Temp\'...
+Checking basic file I/O...
+Writing to temporary file 'C:\Users\KUMAR\AppData\Local\Temp\ea104941ac38e4d1cf2f0680'... OK
+Reading from temporary file 'C:\Users\KUMAR\AppData\Local\Temp\ea104941ac38e4d1cf2f0680'... OK
+Deleting temporary file 'C:\Users\KUMAR\AppData\Local\Temp\ea104941ac38e4d1cf2f0680'... OK
+Testing IFileSystem instance...
+UserHomePath: C:\Users\KUMAR
+UserDataDirectoryPath: C:\Users\KUMAR\.gcm
+GetCurrentDirectory(): E:\RAG MINPROJECT1
+
+------------
+Diagnostic: Networking
+Skipped: False
+Success: True
+Exception: None
+Log:
+Checking networking and HTTP stack...
+Creating HTTP client... OK
+IsNetworkAvailable: True
+Sending HEAD request to http://example.com...Sending HEAD request to https://example.com... OK
+ OK
+Acquiring free TCP port... OK
+Testing local HTTP loopback connections...
+Creating new HTTP listener for http://localhost:55375/... OK
+Waiting for loopback connection... OK
+Writing response... OK
+Waiting for response data... OK
+Loopback connection data OK
+
+------------
+Diagnostic: Git
+Skipped: False
+Success: True
+Exception: None
+Log:
+Getting Git version... OK
+Git version is '2.52.0.windows.1'
+Locating current repository...Git repository at 'E:/RAG MINPROJECT1/.git'
+ OK
+Listing all Git configuration... OK
+Git configuration:
+file:C:/Program Files/Git/etc/gitconfig	diff.astextplain.textconv=astextplain
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.clean=git-lfs clean -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.smudge=git-lfs smudge -- %f
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.process=git-lfs filter-process
+file:C:/Program Files/Git/etc/gitconfig	filter.lfs.required=true
+file:C:/Program Files/Git/etc/gitconfig	http.sslbackend=schannel
+file:C:/Program Files/Git/etc/gitconfig	core.autocrlf=true
+file:C:/Program Files/Git/etc/gitconfig	core.fscache=true
+file:C:/Program Files/Git/etc/gitconfig	core.symlinks=false
+file:C:/Program Files/Git/etc/gitconfig	pull.rebase=false
+file:C:/Program Files/Git/etc/gitconfig	credential.helper=manager
+file:C:/Program Files/Git/etc/gitconfig	credential.https://dev.azure.com.usehttppath=true
+file:C:/Program Files/Git/etc/gitconfig	init.defaultbranch=master
+file:C:/Users/KUMAR/.gitconfig	user.name=Sagar Sai
+file:C:/Users/KUMAR/.gitconfig	user.email=sagarsai@gmail.com
+file:.git/config	core.repositoryformatversion=0
+file:.git/config	core.filemode=false
+file:.git/config	core.bare=false
+file:.git/config	core.logallrefupdates=true
+file:.git/config	core.symlinks=false
+file:.git/config	core.ignorecase=true
+file:.git/config	remote.origin.url=https://github.com/narasingu/RAG-MINIPROJECT1.git
+file:.git/config	remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+
+
+------------
+Diagnostic: Credential storage
+Skipped: False
+Success: True
+Exception: None
+Log:
+ICredentialStore instance is of type: CredentialStore
+Writing test credential... OK
+Reading test credential... OK
+Deleting test credential... OK
+
+------------
+Diagnostic: Microsoft authentication (AAD/MSA)
+Skipped: False
+Success: True
+Exception: None
+Log:
+Broker is not enabled.
+Flow type is: Auto
+Gathering MSAL token cache data... OK
+CacheDirectory: C:\Users\KUMAR\AppData\Local\.IdentityService
+CacheFileName: msal.cache
+CacheFilePath: C:\Users\KUMAR\AppData\Local\.IdentityService\msal.cache
+Creating cache helper... OK
+Verifying MSAL token cache persistence... OK
+
+------------
+Diagnostic: GitHub API
+Skipped: False
+Success: True
+Exception: None
+Log:
+Using 'https://github.com/' as API target.
+Querying '/meta' endpoint... OK
+
