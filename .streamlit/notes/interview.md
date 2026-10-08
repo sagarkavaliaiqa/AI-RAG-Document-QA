@@ -105,3 +105,93 @@ Q: Why do we configure user.name and user.email in Git?
 Answer:
 
 Git records the author's name and email with every commit. This allows changes to be traced back to the developer who made them, which is useful for collaboration, code reviews, and maintaining project history.
+✅ Built an end-to-end RAG application
+✅ Used Python
+✅ Used Streamlit
+✅ Used LangChain
+✅ Used FAISS
+✅ Used Hugging Face Embeddings
+✅ Integrated OpenAI/Ollama
+✅ Learned Git
+✅ Uploaded the project to GitHub
+✅ Solved a real GitHub authentication issue
+
+This is much stronger than just watching tutorials because you built and debugged the project yourself.
+
+Is it useful for your resume?
+
+Yes. Especially if you're targeting QA Automation + AI or SDET + GenAI roles.
+
+You can add a project like this.
+
+Project: End-to-End RAG Chatbot using LangChain
+
+Technologies:
+
+Python
+Streamlit
+LangChain
+FAISS
+Hugging Face Embeddings
+OpenAI/Ollama
+Git & GitHub
+
+Description:
+
+Developed an end-to-end Retrieval-Augmented Generation (RAG) application that allows users to upload PDF documents, generate embeddings, store vectors in FAISS, retrieve relevant document chunks, and answer user questions using an LLM through an interactive Streamlit interface.
+
+Interview Questions You Can Expect
+Project Overview
+What is RAG?
+Why did you build this project?
+Explain the architecture.
+Walk me through your application.
+Python
+Why did you use Python?
+Explain virtual environments.
+What is requirements.txt?
+Why use .env?
+Streamlit
+Why Streamlit?
+How does Streamlit rerun your script?
+How do you upload PDFs?
+LangChain
+What is LangChain?
+What is a Retriever?
+What is a Vector Store?
+What is a Chain?
+Embeddings
+What are embeddings?
+Why not search raw text?
+Which embedding model did you use?
+FAISS
+What is FAISS?
+Why FAISS?
+How are vectors stored?
+Chunking
+Why split PDFs into chunks?
+What chunk size did you use?
+What happens if chunks are too large?
+LLM
+Which LLM did you use?
+Why OpenAI/Ollama?
+What is temperature?
+What is context length?
+Git & GitHub
+Explain git add.
+Explain git commit.
+Explain git push.
+What is .gitignore?
+What is a Git remote?
+Tell me about the GitHub authentication issue you solved.
+Scenario Questions
+What happens when a user uploads a PDF?
+How is the answer generated?
+How would you support multiple PDFs?
+How would you improve retrieval accuracy?
+How would you deploy this application?
+What are the limitations of your current solution?
+streamlit run app.py
+sagarkavali88@gmail.com
+Kavali@2026
+sagarkavali88-hub---->GITHUB USER NAME

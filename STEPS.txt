@@ -1,0 +1,873 @@
+step1
+LOCAL SYSTEM:
+CREATE FOLDER
+NEW TEXT:NAME:requirements
+add in thetext file:
+
+streamlit
+openai
+pypdf
+langchain
+langchain-openai
+langchain-community
+faiss-cpu
+tiktoken
+python-dotenv
+
+step2:
+open vscode terminal
+pip install -r requirements.txt
+installed all requierments
+
+step3:
+Add OpenAI API Key
+
+  a. Create OpenAI API Key
+       Go to:
+       OpenAI Platform
+       Login
+        Click:Create new secret key
+sk-proj-OPENAI_API_KEY=your_api_key_here
+  b. Create .env File
+
+      Inside your project folder:   
+
+
+
+c. Add API Key Inside .env
+   OPENAI_API_KEY=sk-abcd123456789
+
+    Save file.
+d.Install python-dotenv
+
+   Run:
+
+   pip install python-dotenv
+
+Step 3: Create Streamlit RAG App
+Create app.py
+
+import os
+import streamlit as st
+from dotenv import load_dotenv
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_openai import ChatOpenAI
+
+# ---------------------------------------------------
+# Load Environment Variables
+# ---------------------------------------------------
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# ---------------------------------------------------
+# Streamlit Page Config
+# ---------------------------------------------------
+st.set_page_config(
+    page_title="PDF RAG Chatbot",
+    layout="wide"
+)
+
+st.title("📘 PDF RAG Chatbot")
+st.write("Upload PDF and ask questions")
+
+# ---------------------------------------------------
+# Upload PDF
+# ---------------------------------------------------
+uploaded_file = st.file_uploader(
+    "Upload PDF",
+    type="pdf"
+)
+
+# ---------------------------------------------------
+# Process PDF
+# ---------------------------------------------------
+if uploaded_file:
+
+    # Create folder
+    os.makedirs("uploaded_docs", exist_ok=True)
+
+    # Save uploaded file
+    pdf_path = os.path.join(
+        "uploaded_docs",
+        uploaded_file.name
+    )
+
+    with open(pdf_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+
+    st.success("PDF uploaded successfully")
+
+    # ---------------------------------------------------
+    # Load PDF
+    # ---------------------------------------------------
+    loader = PyPDFLoader(pdf_path)
+
+    documents = loader.load()
+
+    st.write(f"Pages Loaded: {len(documents)}")
+
+    # ---------------------------------------------------
+    # Split into Chunks
+    # ---------------------------------------------------
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    docs = text_splitter.split_documents(documents)
+
+    st.write(f"Chunks Created: {len(docs)}")
+
+    # ---------------------------------------------------
+    # Embeddings
+    # ---------------------------------------------------
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small"
+    )
+
+    # ---------------------------------------------------
+    # Vector Database
+    # ---------------------------------------------------
+    vectorstore = FAISS.from_documents(
+        docs,
+        embeddings
+    )
+
+    st.success("FAISS vector DB created")
+
+    # ---------------------------------------------------
+    # User Question
+    # ---------------------------------------------------
+    user_question = st.text_input(
+        "Ask question from PDF"
+    )
+
+    # ---------------------------------------------------
+    # Answer Question
+    # ---------------------------------------------------
+    if user_question:
+
+        # Semantic Search
+        relevant_docs = vectorstore.similarity_search(
+            user_question,
+            k=4
+        )
+
+        # Combine context
+        context = "\n\n".join(
+            [doc.page_content for doc in relevant_docs]
+        )
+
+        # Prompt
+        prompt = f"""
+        Answer the question using the context below.
+
+        Context:
+        {context}
+
+        Question:
+        {user_question}
+        """
+
+        # GPT Model
+        llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0
+        )
+
+        # Generate Response
+        response = llm.invoke(prompt)
+
+        # Show Answer
+        st.subheader("Answer")
+        st.write(response.content)
+
+        # ---------------------------------------------------
+        # Retrieved Chunks
+        # ---------------------------------------------------
+        with st.expander("Retrieved Context"):
+
+            for i, doc in enumerate(relevant_docs):
+
+                st.markdown(f"### Chunk {i+1}")
+
+                st.write(doc.page_content)
+
+    above How This RAG Pipeline Works
+       1. PDF Upload
+
+          User uploads a PDF using Streamlit.
+. PDF Parsing
+
+PyPDFLoader extracts text from all pages.
+
+loader = PyPDFLoader(pdf_path)
+documents = loader.load()
+3. Chunking
+
+Large text is split into smaller chunks.
+
+RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200
+)
+
+This improves retrieval quality.
+
+4. Embeddings
+
+Each chunk is converted into vectors.
+
+OpenAIEmbeddings()
+
+Embedding models convert text into numerical vectors.
+
+5. Vector Database
+
+FAISS stores vectors for fast semantic search.
+
+FAISS.from_documents(docs, embeddings)
+6. Semantic Search
+
+User question is converted into embedding.
+
+FAISS finds similar chunks.
+
+vectorstore.similarity_search(question)
+7. GPT Answer Generation
+
+Relevant chunks + question are sent to GPT.
+
+ChatOpenAI()
+
+GPT generates final answer.
+
+
+4.pip install streamlit openai pypdf langchain langchain-openai langchain-community faiss-cpu tiktoken python-dotenv
+
+
+
+Imp note :
+some time above cmnd run but getting below error 
+PS E:\RAG_PROJECT> streamlit run app.py streamlit : The term 'streamlit' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again. At line:1 char:1 + streamlit run app.py + ~~~~~~~~~ + CategoryInfo : ObjectNotFound: (streamlit:String) [], CommandNo tFoundException + FullyQualifiedErrorId : CommandNotFoundException
+
+Then separately run
+python -m streamlit run app.py
+
+ERROR
+ModuleNotFoundError: No module named 'langchain.text_splitter'
+
+File "E:\RAG_PROJECT\app.py", line 6, in <module>
+    from langchain.text_splitter import RecursiveCharacterTextSplitter
+
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+RUN
+pip install langchain-text-splitters
+
+python -m streamlit run app.py
+
+
+ERROR
+ModuleNotFoundError: No module named 'langchain.chains'
+
+File "E:\RAG_PROJECT\app.py", line 9, in <module>
+    from langchain.chains.question_answering import load_qa_chain
+
+GETTING ABOVE ERRORS UPDATE THECODE
+
+
+import os
+import streamlit as st
+from dotenv import load_dotenv
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_openai import OpenAIEmbeddings
+from langchain_community.vectorstores import FAISS
+from langchain_openai import ChatOpenAI
+
+# ---------------------------------------------------
+# Load Environment Variables
+# ---------------------------------------------------
+load_dotenv()
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# ---------------------------------------------------
+# Streamlit Page Config
+# ---------------------------------------------------
+st.set_page_config(
+    page_title="PDF RAG Chatbot",
+    layout="wide"
+)
+
+st.title("📘 PDF RAG Chatbot")
+st.write("Upload PDF and ask questions")
+
+# ---------------------------------------------------
+# Upload PDF
+# ---------------------------------------------------
+uploaded_file = st.file_uploader(
+    "Upload PDF",
+    type="pdf"
+)
+
+# ---------------------------------------------------
+# Process PDF
+# ---------------------------------------------------
+if uploaded_file:
+
+    # Create folder
+    os.makedirs("uploaded_docs", exist_ok=True)
+
+    # Save uploaded file
+    pdf_path = os.path.join(
+        "uploaded_docs",
+        uploaded_file.name
+    )
+
+    with open(pdf_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+
+    st.success("PDF uploaded successfully")
+
+    # ---------------------------------------------------
+    # Load PDF
+    # ---------------------------------------------------
+    loader = PyPDFLoader(pdf_path)
+
+    documents = loader.load()
+
+    st.write(f"Pages Loaded: {len(documents)}")
+
+    # ---------------------------------------------------
+    # Split into Chunks
+    # ---------------------------------------------------
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    docs = text_splitter.split_documents(documents)
+
+    st.write(f"Chunks Created: {len(docs)}")
+
+    # ---------------------------------------------------
+    # Embeddings
+    # ---------------------------------------------------
+    embeddings = OpenAIEmbeddings(
+        model="text-embedding-3-small"
+    )
+
+    # ---------------------------------------------------
+    # Vector Database
+    # ---------------------------------------------------
+    vectorstore = FAISS.from_documents(
+        docs,
+        embeddings
+    )
+
+    st.success("FAISS vector DB created")
+
+    # ---------------------------------------------------
+    # User Question
+    # ---------------------------------------------------
+    user_question = st.text_input(
+        "Ask question from PDF"
+    )
+
+    # ---------------------------------------------------
+    # Answer Question
+    # ---------------------------------------------------
+    if user_question:
+
+        # Semantic Search
+        relevant_docs = vectorstore.similarity_search(
+            user_question,
+            k=4
+        )
+
+        # Combine context
+        context = "\n\n".join(
+            [doc.page_content for doc in relevant_docs]
+        )
+
+        # Prompt
+        prompt = f"""
+        Answer the question using the context below.
+
+        Context:
+        {context}
+
+        Question:
+        {user_question}
+        """
+
+        # GPT Model
+        llm = ChatOpenAI(
+            model="gpt-4.1-mini",
+            temperature=0
+        )
+
+        # Generate Response
+        response = llm.invoke(prompt)
+
+        # Show Answer
+        st.subheader("Answer")
+        st.write(response.content)
+
+        # ---------------------------------------------------
+        # Retrieved Chunks
+        # ---------------------------------------------------
+        with st.expander("Retrieved Context"):
+
+            for i, doc in enumerate(relevant_docs):
+
+                st.markdown(f"### Chunk {i+1}")
+
+                st.write(doc.page_content)
+
+RUN CMND
+python -m streamlit run app.py
+
+python	Start Python
+-m	Run a Python module
+streamlit	Run Streamlit package
+run	Start web app
+app.py	Your chatbot program
+What Happens After Running
+
+Streamlit:
+
+Reads app.py
+Creates web UI
+Opens local server
+Shows chatbot in browser
+
+http://localhost:8501/
+Why Not Just python app.py?
+
+Because Streamlit apps are web apps, not normal Python console programs.
+
+This:
+
+python app.py
+
+runs as normal Python script only.
+
+But this:
+
+python -m streamlit run app.py
+
+creates:
+
+buttons
+chat UI
+PDF upload UI
+browser app
+
+
+
+
+
+
+Default filesize in Stamlit-200mb
+if need to increace file size
+create folder in VSCODE
+NAME:.streamlit
+Inside it create file:
+
+config.toml
+[server]
+maxUploadSize = 500
+
+even getting error because open api key for embeddings and chunks pay the money 
+using huggingface and  sentence-transformers
+Hugging Face = platform/company/model hub
+sentence-transformers = Python library built on top of Hugging Face Transformers
+
+pip install sentence-transformers
+python -m streamlit run app.py
+
+
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.29.164:8501BUT ETTING ERROR BCZ OPEN API EMBEDING NEED TO PAY AMOUNT SOINSTEAD OF USING
+Replace your entire app.py with this updated FREE version.
+
+This version:
+
+Uses HuggingFace embeddings
+Uses free local HuggingFace LLM
+Removes OpenAI quota errors
+Works fully offline after model download
+====
+
+import os
+import streamlit as st
+from dotenv import load_dotenv
+
+from transformers import pipeline
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+
+# ---------------------------------------------------
+# Load Environment Variables
+# ---------------------------------------------------
+load_dotenv()
+
+# ---------------------------------------------------
+# Streamlit Page Config
+# ---------------------------------------------------
+st.set_page_config(
+    page_title="PDF RAG Chatbot",
+    layout="wide"
+)
+
+st.title("📘 FREE PDF RAG Chatbot")
+st.write("Upload PDF and ask questions")
+
+# ---------------------------------------------------
+# Upload PDF
+# ---------------------------------------------------
+uploaded_file = st.file_uploader(
+    "Upload PDF",
+    type="pdf"
+)
+
+# ---------------------------------------------------
+# Process PDF
+# ---------------------------------------------------
+if uploaded_file:
+
+    # Create folder
+    os.makedirs("uploaded_docs", exist_ok=True)
+
+    # Save uploaded file
+    pdf_path = os.path.join(
+        "uploaded_docs",
+        uploaded_file.name
+    )
+
+    with open(pdf_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+
+    st.success("PDF uploaded successfully")
+
+    # ---------------------------------------------------
+    # Load PDF
+    # ---------------------------------------------------
+    loader = PyPDFLoader(pdf_path)
+
+    documents = loader.load()
+
+    st.write(f"Pages Loaded: {len(documents)}")
+
+    # ---------------------------------------------------
+    # Split into Chunks
+    # ---------------------------------------------------
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    docs = text_splitter.split_documents(documents)
+
+    # Limit chunks for testing
+    docs = docs[:50]
+
+    st.write(f"Chunks Created: {len(docs)}")
+
+    # ---------------------------------------------------
+    # Embeddings
+    # ---------------------------------------------------
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    # ---------------------------------------------------
+    # Vector Database
+    # ---------------------------------------------------
+    vectorstore = FAISS.from_documents(
+        docs,
+        embeddings
+    )
+
+    st.success("FAISS vector DB created")
+
+    # ---------------------------------------------------
+    # User Question
+    # ---------------------------------------------------
+    user_question = st.text_input(
+        "Ask question from PDF"
+    )
+
+    # ---------------------------------------------------
+    # Answer Question
+    # ---------------------------------------------------
+    if user_question:
+
+        # Semantic Search
+        relevant_docs = vectorstore.similarity_search(
+            user_question,
+            k=4
+        )
+
+        # Combine context
+        context = "\n\n".join(
+            [doc.page_content for doc in relevant_docs]
+        )
+
+        # Prompt
+        prompt = f"""
+Answer the question using the context below.
+
+Context:
+{context}
+
+Question:
+{user_question}
+"""
+
+        # ---------------------------------------------------
+        # Free Local LLM
+        # ---------------------------------------------------
+        generator = pipeline(
+            "text2text-generation",
+            model="google/flan-t5-base"
+        )
+
+        # Generate Answer
+        result = generator(
+            prompt,
+            max_length=300,
+            do_sample=False
+        )
+
+        answer = result[0]["generated_text"]
+
+        # ---------------------------------------------------
+        # Show Answer
+        # ---------------------------------------------------
+        st.subheader("Answer")
+        st.write(answer)
+
+        # ---------------------------------------------------
+        # Retrieved Chunks
+        # ---------------------------------------------------
+        with st.expander("Retrieved Context"):
+
+            for i, doc in enumerate(relevant_docs):
+
+                st.markdown(f"### Chunk {i+1}")
+
+                st.write(doc.page_content)
+
+====
+
+
+pip install transformers torch accelerate sentence-transformers
+python -m streamlit run app.py
+=======================================
+
+NEW CODE
+
+
+
+import os
+import streamlit as st
+from dotenv import load_dotenv
+
+from transformers import pipeline
+
+from langchain_community.document_loaders import PyPDFLoader
+from langchain_text_splitters import RecursiveCharacterTextSplitter
+from langchain_community.embeddings import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
+
+# ---------------------------------------------------
+# Load Environment Variables
+# ---------------------------------------------------
+load_dotenv()
+
+# ---------------------------------------------------
+# Streamlit Page Config
+# ---------------------------------------------------
+st.set_page_config(
+    page_title="PDF RAG Chatbot",
+    layout="wide"
+)
+
+st.title("📘 FREE PDF RAG Chatbot")
+st.write("Upload PDF and ask questions")
+
+# ---------------------------------------------------
+# Upload PDF
+# ---------------------------------------------------
+uploaded_file = st.file_uploader(
+    "Upload PDF",
+    type="pdf"
+)
+
+# ---------------------------------------------------
+# Process PDF
+# ---------------------------------------------------
+if uploaded_file:
+
+    # Create folder
+    os.makedirs("uploaded_docs", exist_ok=True)
+
+    # Save uploaded file
+    pdf_path = os.path.join(
+        "uploaded_docs",
+        uploaded_file.name
+    )
+
+    with open(pdf_path, "wb") as f:
+        f.write(uploaded_file.getbuffer())
+
+    st.success("PDF uploaded successfully")
+
+    # ---------------------------------------------------
+    # Load PDF
+    # ---------------------------------------------------
+    loader = PyPDFLoader(pdf_path)
+
+    documents = loader.load()
+
+    st.write(f"Pages Loaded: {len(documents)}")
+
+    # ---------------------------------------------------
+    # Split into Chunks
+    # ---------------------------------------------------
+    text_splitter = RecursiveCharacterTextSplitter(
+        chunk_size=1000,
+        chunk_overlap=200
+    )
+
+    docs = text_splitter.split_documents(documents)
+
+    # Limit chunks for testing
+    docs = docs[:50]
+
+    st.write(f"Chunks Created: {len(docs)}")
+
+    # ---------------------------------------------------
+    # Embeddings
+    # ---------------------------------------------------
+    embeddings = HuggingFaceEmbeddings(
+        model_name="sentence-transformers/all-MiniLM-L6-v2"
+    )
+
+    # ---------------------------------------------------
+    # Vector Database
+    # ---------------------------------------------------
+    vectorstore = FAISS.from_documents(
+        docs,
+        embeddings
+    )
+
+    st.success("FAISS vector DB created")
+
+    # ---------------------------------------------------
+    # User Question
+    # ---------------------------------------------------
+    user_question = st.text_input(
+        "Ask question from PDF"
+    )
+
+    # ---------------------------------------------------
+    # ```python id="x2v9mq"
+    # ---------------------------------------------------
+    # Answer Question
+    # ---------------------------------------------------
+    if user_question:
+
+        # Semantic Search
+        relevant_docs = vectorstore.similarity_search(
+            user_question,
+            k=4
+        )
+
+        # Show retrieved chunks
+        st.subheader("Retrieved Chunks")
+
+        for i, doc in enumerate(relevant_docs):
+
+            st.markdown(f"### Chunk {i+1}")
+            st.write(doc.page_content[:500])
+
+        # Combine context
+        context = "\n\n".join(
+            [doc.page_content for doc in relevant_docs]
+        )
+
+        # Prompt
+        prompt = f"""
+You are a helpful AI assistant.
+
+Answer ONLY from the provided PDF context.
+
+If the answer is not found in context, say:
+"I could not find the answer in the PDF."
+
+Context:
+{context}
+
+Question:
+{user_question}
+
+Answer:
+"""
+
+        # ---------------------------------------------------
+        # Free Local LLM
+        # ---------------------------------------------------
+        generator = pipeline(
+            "text-generation",
+            model="TinyLlama/TinyLlama-1.1B-Chat-v1.0"
+        )
+
+        # Generate response
+        result = generator(
+            prompt,
+            max_new_tokens=200,
+            do_sample=False
+        )
+
+        # Extract answer
+        answer = result[0]["generated_text"]
+
+        # ---------------------------------------------------
+        # Show Answer
+        # ---------------------------------------------------
+        st.subheader("Answer")
+        st.write(answer)
+
+        # ---------------------------------------------------
+        # Retrieved Chunks Expandable
+        # ---------------------------------------------------
+        with st.expander("Retrieved Context"):
+
+            for i, doc in enumerate(relevant_docs):
+
+                st.markdown(f"### Chunk {i+1}")
+                st.write(doc.page_content)
+
+python -m streamlit run app.py
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.29.164:8501
+
+
+
